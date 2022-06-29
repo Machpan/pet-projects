@@ -17,13 +17,13 @@ class WebPageViewController: UIViewController {
         self.view.backgroundColor = .green
         webPage.frame = self.view.bounds
         self.view.addSubview(webPage)
-        if let webPageName = model.webPages[viewTag]{
-            let stringForUrl = "https://www." + webPageName
-            if let url = URL(string: stringForUrl){
-                let request = URLRequest(url: url)
-                webPage.load(request)
-                webPage.allowsBackForwardNavigationGestures = true
-                }
-            }
+//        if let webPageName = model.webPages[viewTag]{
+//            let stringForUrl = "https://www." + webPageName
+//            if let url = URL(string: stringForUrl){
+//                let request = URLRequest(url: url)
+//                webPage.load(request)
+//                webPage.allowsBackForwardNavigationGestures = true
+//                }
+//            }
         }
     }

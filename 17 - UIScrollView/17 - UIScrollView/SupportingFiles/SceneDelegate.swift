@@ -15,20 +15,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScreen = (scene as? UIWindowScene) else { return }
          
+        let searchVC = SearchViewController()
         let buyVC = BuyViewController()
         let forYouVC = ForYouViewController()
-        let searchVC = SearchViewController()
         let cartVC = CartViewController()
         let tabBarVC = UITabBarController()
         //прописываем это здесь, чтобы barItem сразу появился при загрузке
+        searchVC.tabBarItem = UITabBarItem(title: "Поиск", image: UIImage(systemName: "magnifyingglass"), tag: 2)
         buyVC.tabBarItem = UITabBarItem(title: "Купить", image: .checkmark, selectedImage: .add)
         forYouVC.tabBarItem = UITabBarItem(title: "Для вас", image: .checkmark, selectedImage: .add)
-        searchVC.tabBarItem = UITabBarItem(title: "Поиск", image: UIImage(systemName: "magnifyingglass"), tag: 2)
         cartVC.tabBarItem = UITabBarItem(title: "Корзина", image: .checkmark, selectedImage: .add)
-        
-        tabBarVC.setViewControllers([buyVC, forYouVC, searchVC, cartVC], animated: true)
-        tabBarVC.tabBar.backgroundColor = model.backgroundColorForObjects
-        tabBarVC.tabBar.tintColor = model.tintColorForButtons
+        tabBarVC.setViewControllers([searchVC, buyVC, forYouVC, cartVC], animated: true)
+        tabBarVC.tabBar.backgroundColor = UIColor(red: 0.07, green: 0.09, blue: 0.1, alpha: 1)
+        tabBarVC.tabBar.tintColor = UIColor(red: 0.37, green: 0.78, blue: 0.9, alpha: 1)
         tabBarVC.tabBar.unselectedItemTintColor = .lightGray
         
         let navController = UINavigationController(rootViewController: tabBarVC)
@@ -38,35 +37,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.backgroundColor = .black
         window?.makeKeyAndVisible()
     }
-
-    func sceneDidDisconnect(_ scene: UIScene) {
-        // Called as the scene is being released by the system.
-        // This occurs shortly after the scene enters the background, or when its session is discarded.
-        // Release any resources associated with this scene that can be re-created the next time the scene connects.
-        // The scene may re-connect later, as its session was not necessarily discarded (see `application:didDiscardSceneSessions` instead).
-    }
-
-    func sceneDidBecomeActive(_ scene: UIScene) {
-        // Called when the scene has moved from an inactive state to an active state.
-        // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
-    }
-
-    func sceneWillResignActive(_ scene: UIScene) {
-        // Called when the scene will move from an active state to an inactive state.
-        // This may occur due to temporary interruptions (ex. an incoming phone call).
-    }
-
-    func sceneWillEnterForeground(_ scene: UIScene) {
-        // Called as the scene transitions from the background to the foreground.
-        // Use this method to undo the changes made on entering the background.
-    }
-
-    func sceneDidEnterBackground(_ scene: UIScene) {
-        // Called as the scene transitions from the foreground to the background.
-        // Use this method to save data, release shared resources, and store enough scene-specific state information
-        // to restore the scene back to its current state.
-    }
-
-
 }
 

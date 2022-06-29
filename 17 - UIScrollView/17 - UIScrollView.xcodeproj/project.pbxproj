@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C60E49BE286761420019714D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60E49BD286761420019714D /* Model.swift */; };
+		C60E49C0286761590019714D /* ProductsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60E49BF286761590019714D /* ProductsCollectionViewCell.swift */; };
+		C60E49C22867616E0019714D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60E49C12867616E0019714D /* Constants.swift */; };
 		C6B15EAE28427E7900B57D1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B15EAD28427E7900B57D1D /* AppDelegate.swift */; };
 		C6B15EB028427E7900B57D1D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B15EAF28427E7900B57D1D /* SceneDelegate.swift */; };
 		C6B15EB228427E7900B57D1D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B15EB128427E7900B57D1D /* SearchViewController.swift */; };
@@ -16,12 +19,14 @@
 		C6B15EC62842831700B57D1D /* BuyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B15EC52842831700B57D1D /* BuyViewController.swift */; };
 		C6B15EC82842832A00B57D1D /* ForYouViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B15EC72842832A00B57D1D /* ForYouViewController.swift */; };
 		C6B15ECA2842836800B57D1D /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B15EC92842836800B57D1D /* CartViewController.swift */; };
-		C6B15ECD28428FE200B57D1D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B15ECC28428FE200B57D1D /* Model.swift */; };
 		C6B15ECF2842CB9B00B57D1D /* ProductPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B15ECE2842CB9B00B57D1D /* ProductPageViewController.swift */; };
 		C6BF0EFC28496EF000437707 /* WebPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BF0EFB28496EF000437707 /* WebPageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C60E49BD286761420019714D /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		C60E49BF286761590019714D /* ProductsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsCollectionViewCell.swift; sourceTree = "<group>"; };
+		C60E49C12867616E0019714D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C6B15EAA28427E7900B57D1D /* 17 - UIScrollView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "17 - UIScrollView.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6B15EAD28427E7900B57D1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C6B15EAF28427E7900B57D1D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -33,7 +38,6 @@
 		C6B15EC52842831700B57D1D /* BuyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyViewController.swift; sourceTree = "<group>"; };
 		C6B15EC72842832A00B57D1D /* ForYouViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForYouViewController.swift; sourceTree = "<group>"; };
 		C6B15EC92842836800B57D1D /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
-		C6B15ECC28428FE200B57D1D /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		C6B15ECE2842CB9B00B57D1D /* ProductPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProductPageViewController.swift; path = "17 - UIScrollView/ViewControllers/ProductPageViewController.swift"; sourceTree = SOURCE_ROOT; };
 		C6BF0EFB28496EF000437707 /* WebPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WebPageViewController.swift; path = "17 - UIScrollView/ViewControllers/WebPageViewController.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -92,6 +96,7 @@
 			children = (
 				C6B15EB128427E7900B57D1D /* SearchViewController.swift */,
 				C6B15ECE2842CB9B00B57D1D /* ProductPageViewController.swift */,
+				C60E49BF286761590019714D /* ProductsCollectionViewCell.swift */,
 				C6B15EC52842831700B57D1D /* BuyViewController.swift */,
 				C6B15EC72842832A00B57D1D /* ForYouViewController.swift */,
 				C6B15EC92842836800B57D1D /* CartViewController.swift */,
@@ -120,7 +125,8 @@
 		C6B15ECB28428FCC00B57D1D /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				C6B15ECC28428FE200B57D1D /* Model.swift */,
+				C60E49C12867616E0019714D /* Constants.swift */,
+				C60E49BD286761420019714D /* Model.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -196,15 +202,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C60E49C0286761590019714D /* ProductsCollectionViewCell.swift in Sources */,
 				C6BF0EFC28496EF000437707 /* WebPageViewController.swift in Sources */,
-				C6B15ECD28428FE200B57D1D /* Model.swift in Sources */,
 				C6B15EB228427E7900B57D1D /* SearchViewController.swift in Sources */,
 				C6B15EC62842831700B57D1D /* BuyViewController.swift in Sources */,
 				C6B15EAE28427E7900B57D1D /* AppDelegate.swift in Sources */,
 				C6B15EC82842832A00B57D1D /* ForYouViewController.swift in Sources */,
 				C6B15ECA2842836800B57D1D /* CartViewController.swift in Sources */,
+				C60E49BE286761420019714D /* Model.swift in Sources */,
 				C6B15EB028427E7900B57D1D /* SceneDelegate.swift in Sources */,
 				C6B15ECF2842CB9B00B57D1D /* ProductPageViewController.swift in Sources */,
+				C60E49C22867616E0019714D /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,7 +367,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -388,7 +396,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
