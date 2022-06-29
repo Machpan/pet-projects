@@ -4,7 +4,9 @@ class SearchViewController: UIViewController {
     let (searchLabel, recentlyWatchedLabel, requestslabel) = (UILabel(), UILabel(), UILabel())
     let searchTextField = UITextField()
     let collectionView = UICollectionView()
-    
+    //отступы для CollectionView
+    let itemsPerRow: CGFloat = 3
+    let sectionInserts = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
     //тёмно-серый фон для объектов
     let backgroundColorForObjects = UIColor(red: 0.07, green: 0.09, blue: 0.1, alpha: 1)
     //голубой цвет для кнопок
@@ -27,6 +29,13 @@ class SearchViewController: UIViewController {
         createSearchTextField()
         createScrollView()
         createQueryOptionsButtons()
+        collectionView.register(ProductCollectionViewCell.self, forCellWithReuseIdentifier: Constants.collectionViewCellID)
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        let layout =  UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        self.collectionView.collectionViewLayout = layout
+        
     }
 //Вёрстка текстового поля
     func createSearchTextField(){
@@ -136,3 +145,60 @@ class SearchViewController: UIViewController {
     }
 }
 
+extension SearchViewController: UICollectionViewDataSource, UICollectionViewDelegate{
+    
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.collectionViewCellID, for: indexPath) as? ProductCollectionViewCell{
+            let product = recentlyWatchedObjects[indexPath]
+            cell.productValue = recentlyWatchedObjects[indexPath]
+            return cell
+        }
+        return UICollectionViewCell()
+    }
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
+
+
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return recentlyWatchedObjects.count
+    }
+
+//    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as! PhotoCell
+//
+//        let imageName = photos[indexPath.item]
+//        let image = UIImage(named: imageName)
+//
+//        cell.dogImageView.image = image
+//
+//        return cell
+//    }
+    
+}
+extension SearchViewController: UICollectionViewDelegateFlowLayout{
+
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let paddingWidth = sectionInserts.left * (itemsPerRow + 1)
+        let availableWidth = collectionView.frame.width - paddingWidth
+        let widthPerItem = availableWidth / itemsPerRow
+        return CGSize(width: widthPerItem, height: widthPerItem)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return sectionInserts
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return sectionInserts.left
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return sectionInserts.left
+    }
+}

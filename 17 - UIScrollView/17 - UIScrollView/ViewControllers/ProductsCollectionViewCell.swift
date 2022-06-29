@@ -8,5 +8,15 @@
 import UIKit
 
 class ProductCollectionViewCell: UICollectionViewCell {
-    let whereIS = "Where?"
+    let productImageView = UIImageView()
+    let productLabel = UILabel()
+    
+    var productValue: Product?{
+        didSet{
+            productLabel.text = productValue?.description
+            if let image = productValue?.productPhoto[0]{
+                productImageView.image = UIImage(named: image)
+            }
+        }
+    }
 }

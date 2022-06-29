@@ -8,6 +8,7 @@
 import Foundation
 
 struct Constants{
+    static let collectionViewCellID = "recentlyWatched"
     
     private init() {}
 }
