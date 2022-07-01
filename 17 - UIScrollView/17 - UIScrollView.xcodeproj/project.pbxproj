@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		AABFB1F94052768FD33599CD /* Pods_17___UIScrollView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F34093C60C11784592A830C /* Pods_17___UIScrollView.framework */; };
 		C60E49BE286761420019714D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60E49BD286761420019714D /* Model.swift */; };
-		C60E49C0286761590019714D /* ProductsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60E49BF286761590019714D /* ProductsCollectionViewCell.swift */; };
 		C60E49C22867616E0019714D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60E49C12867616E0019714D /* Constants.swift */; };
 		C6B15EAE28427E7900B57D1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B15EAD28427E7900B57D1D /* AppDelegate.swift */; };
 		C6B15EB028427E7900B57D1D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B15EAF28427E7900B57D1D /* SceneDelegate.swift */; };
@@ -29,7 +28,6 @@
 		4A04B52EEB9B60A801EC0CA2 /* Pods-17 - UIScrollView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-17 - UIScrollView.debug.xcconfig"; path = "Target Support Files/Pods-17 - UIScrollView/Pods-17 - UIScrollView.debug.xcconfig"; sourceTree = "<group>"; };
 		8F34093C60C11784592A830C /* Pods_17___UIScrollView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods_17___UIScrollView.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C60E49BD286761420019714D /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		C60E49BF286761590019714D /* ProductsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsCollectionViewCell.swift; sourceTree = "<group>"; };
 		C60E49C12867616E0019714D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C6B15EAA28427E7900B57D1D /* 17 - UIScrollView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "17 - UIScrollView.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6B15EAD28427E7900B57D1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -110,7 +108,6 @@
 			isa = PBXGroup;
 			children = (
 				C6B15EB128427E7900B57D1D /* SearchViewController.swift */,
-				C60E49BF286761590019714D /* ProductsCollectionViewCell.swift */,
 				C6B15ECE2842CB9B00B57D1D /* ProductPageViewController.swift */,
 				C6B15EC52842831700B57D1D /* BuyViewController.swift */,
 				C6B15EC72842832A00B57D1D /* ForYouViewController.swift */,
@@ -270,7 +267,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C60E49C0286761590019714D /* ProductsCollectionViewCell.swift in Sources */,
 				C6BF0EFC28496EF000437707 /* WebPageViewController.swift in Sources */,
 				C6B15EB228427E7900B57D1D /* SearchViewController.swift in Sources */,
 				C6B15EC62842831700B57D1D /* BuyViewController.swift in Sources */,
