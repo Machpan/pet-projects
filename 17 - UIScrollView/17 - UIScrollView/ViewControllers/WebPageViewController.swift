@@ -9,7 +9,7 @@ import UIKit
 import WebKit
 
 class WebPageViewController: UIViewController {
-    var viewTag = 0
+    var webPageValue = ""
     let webPage = WKWebView()
     
     override func viewDidLoad() {
@@ -17,13 +17,11 @@ class WebPageViewController: UIViewController {
         self.view.backgroundColor = .green
         webPage.frame = self.view.bounds
         self.view.addSubview(webPage)
-//        if let webPageName = model.webPages[viewTag]{
-//            let stringForUrl = "https://www." + webPageName
-//            if let url = URL(string: stringForUrl){
-//                let request = URLRequest(url: url)
-//                webPage.load(request)
-//                webPage.allowsBackForwardNavigationGestures = true
-//                }
-//            }
+        let stringForUrl = "https://www." + webPageValue
+        if let url = URL(string: stringForUrl){
+            let request = URLRequest(url: url)
+            webPage.load(request)
+            webPage.allowsBackForwardNavigationGestures = true
         }
     }
+}

@@ -12,7 +12,6 @@ class ProductPageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         createBarButtonitems()
         createTitleLabel()
         createTitleBottomLabel()
@@ -22,12 +21,6 @@ class ProductPageViewController: UIViewController {
         createAddToCartButton()
         makeConstraints()
     }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        grayRoundButton.layer.cornerRadius = grayRoundButton.bounds.size.height / 2
-        brownRoundButton.layer.cornerRadius = brownRoundButton.bounds.size.width / 2
-    }
-    
     //создаем кастомные кнопки сверху
     func createBarButtonitems() {
         backButton.setTitle(" Поиск", for: .normal)
@@ -62,55 +55,59 @@ class ProductPageViewController: UIViewController {
         titleBottomLabel.text = product?.description
         setGeneralOptionsForLabels(label: titleBottomLabel, font: "Helvetica", size: 12, color: .lightGray)
     }
-    
     //верстка ScrollView
     func createScrollView(){
         var startXForView = 0
         scrollView.backgroundColor = .white
-        scrollView.frame = CGRect(x: 20, y: 192, width: view.bounds.width, height: 213)
-//        scrollView.contentSize = CGSize(width: (view.bounds.width * CGFloat((model.productPhoto[keyValue]?.count)!)),
-//                                        height: scrollView.bounds.height)
+        scrollView.frame = CGRect(x: 0, y: 200, width: view.bounds.width, height: 213)
+        if let productPhotoCount = product?.productPhoto.count{
+            scrollView.contentSize = CGSize(width: (view.bounds.width * CGFloat(productPhotoCount)), height: scrollView.bounds.height)
+        }
         //добавляем фото из словаря соответствующего ключа
-//        if let photoBank = model.productPhoto[keyValue]{
-//            for onePhoto in photoBank{
-//                let imageView = UIImageView()
-//                imageView.frame = CGRect(x: startXForView, y: 0, width: Int(view.bounds.width), height: 213)
-//                imageView.contentMode = .scaleAspectFit
-//                imageView.image = onePhoto
-//                scrollView.addSubview(imageView)
-//                startXForView += Int(imageView.bounds.width)
-//            }
-//        }
+        if let photoBank = product?.productPhoto{
+            for onePhoto in photoBank{
+                let imageView = UIImageView()
+                imageView.frame = CGRect(x: startXForView, y: 0, width: Int(view.bounds.width), height: 213)
+                imageView.contentMode = .scaleAspectFit
+                if let unrapPhoto = onePhoto{
+                    imageView.image = UIImage(named: unrapPhoto)
+                }
+                scrollView.addSubview(imageView)
+                startXForView += Int(imageView.bounds.width)
+            }
+        }
         //стиль прокрутки
         scrollView.isPagingEnabled = true
         //белые индикаторы
         scrollView.indicatorStyle = .white
-        
+        //наблюдатель за тапами по вью
         let recognizer = UITapGestureRecognizer()
         recognizer.addTarget(self, action: #selector(tapForViewAction(_:)))
         scrollView.addGestureRecognizer(recognizer)
-        
         view.addSubview(scrollView)
     }
     @objc func tapForViewAction(_ gestureRecognizer: UITapGestureRecognizer) {
         //переходим на следующий экран
-//        let webBrowser = WebPageViewController()
-//        webBrowser.viewTag = self.viewTag
-//        self.navigationController?.pushViewController(webBrowser, animated: true)
+        let webBrowser = WebPageViewController()
+        if let webPage = product?.webPage{
+            webBrowser.webPageValue = webPage
+        }
+        self.navigationController?.pushViewController(webBrowser, animated: true)
     }
     //верстка круглых кнопок
     func createRoundButtons(){
         grayRoundButton.backgroundColor = .lightGray
         brownRoundButton.backgroundColor = .brown
-
-        print(brownRoundButton.bounds.size.width)
+        grayRoundButton.frame = CGRect(x: 0, y: 0, width: 70, height: 70)
+        brownRoundButton.frame = CGRect(x: 0, y: 0, width: 70, height: 70)
+        grayRoundButton.layer.cornerRadius = grayRoundButton.bounds.width / 2
+        brownRoundButton.layer.cornerRadius = brownRoundButton.bounds.size.width / 2
         stackView = UIStackView(arrangedSubviews: [grayRoundButton, brownRoundButton])
         stackView.axis = .horizontal
-        stackView.distribution = .fillEqually
+        stackView.distribution = .fill
         stackView.alignment = .fill
         stackView.spacing = 20
         view.addSubview(stackView)
-
     }
     //кнопка Добавить в корзину
     func createAddToCartButton(){
@@ -121,8 +118,6 @@ class ProductPageViewController: UIViewController {
         addToCartButton.titleLabel?.font = UIFont(name: "Helvetica-Bold", size: 16)
         view.addSubview(addToCartButton)
     }
-    
-    
     //MARK: Вспомогательные функции
     //создаём лейблы
     func setGeneralOptionsForLabels(label: UILabel, font: String, size: CGFloat, color: UIColor){
@@ -138,7 +133,6 @@ class ProductPageViewController: UIViewController {
         button.imageView?.tintColor = tintColorForButtons
     }
 }
-
 //MARK: Констрейнты
 extension ProductPageViewController{
     private func makeConstraints(){
@@ -155,10 +149,19 @@ extension ProductPageViewController{
             make.centerX.equalToSuperview()
             make.top.equalTo(titleLabel).inset(50)
         }
+        titleBottomLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(scrollView).inset(230)
+        }
         stackView.snp.makeConstraints { make in
-            make.centerX.centerY.equalToSuperview()
-            make.width.equalTo(150)
-            make.height.equalTo(50)
+            make.centerX.equalToSuperview()
+            make.top.equalTo(titleBottomLabel).inset(30)
+        }
+        grayRoundButton.snp.makeConstraints { make in
+            make.width.height.equalTo(70)
+        }
+        brownRoundButton.snp.makeConstraints { make in
+            make.width.height.equalTo(grayRoundButton)
         }
     }
 }

@@ -109,10 +109,10 @@
 			children = (
 				C6B15EB128427E7900B57D1D /* SearchViewController.swift */,
 				C6B15ECE2842CB9B00B57D1D /* ProductPageViewController.swift */,
+				C6BF0EFB28496EF000437707 /* WebPageViewController.swift */,
 				C6B15EC52842831700B57D1D /* BuyViewController.swift */,
 				C6B15EC72842832A00B57D1D /* ForYouViewController.swift */,
 				C6B15EC92842836800B57D1D /* CartViewController.swift */,
-				C6BF0EFB28496EF000437707 /* WebPageViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";

@@ -8,7 +8,7 @@ final class SearchViewController: UIViewController {
     private var stackView = UIStackView()
     private let scrollView = UIScrollView()
     //добавляем объекты в модель
-    var recentlyWatchedObjects = [Product(price: 990, description: "Силиконовый чехол для iPhone 8-13", productPhoto: ["iphone" ,"1", "2", "3"], webPage: "pikabu.ru"),
+    public var recentlyWatchedObjects = [Product(price: 990, description: "Силиконовый чехол для iPhone 8-13", productPhoto: ["iphone" ,"1", "2", "3"], webPage: "pikabu.ru"),
                                   Product(price: 2300, description: "Чехол для MacBook Pro m1", productPhoto: ["macbook", "mb1", "mb2", "mb3"], webPage: "yandex.ru"),
                                   Product(price: 4800, description: "Кожаный ремешок для Apple Watch series", productPhoto: ["iwatch", "w1", "w2", "w3"], webPage: "mobile-review.com"),
                                   Product(price: 2400, description: "Противоударный чехол для iPad", productPhoto: ["ipad", "ipad1", "ipad2", "ipad3"], webPage: "rutube.com")]
@@ -66,7 +66,7 @@ final class SearchViewController: UIViewController {
         view.addSubview(stackView)
     }
     //вёрстка ScrollView -> View -> ImageView + label
-    func createScrollView(){
+    private func createScrollView(){
         //начальная координата по оси Х для вью
         var startXForView = 0
         //фрейм для скроллВью
@@ -113,7 +113,7 @@ final class SearchViewController: UIViewController {
         view.addSubview(scrollView)
     }
     //экшен для тапа по пью
-    @objc func tapForViewAction(_ gestureRecognizer: UITapGestureRecognizer) {
+    @objc private func tapForViewAction(_ gestureRecognizer: UITapGestureRecognizer) {
         //запоминаем индекс вью
         let productIndex = gestureRecognizer.view?.tag
         //переходим на следующий экран
