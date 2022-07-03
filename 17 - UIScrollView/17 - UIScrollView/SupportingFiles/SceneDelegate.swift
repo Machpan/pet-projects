@@ -1,6 +1,6 @@
 //
 //  SceneDelegate.swift
-//  17 - UIScrollView
+//  e-shop
 //
 //  Created by Владимир Осипов on 28.05.2022.
 //

@@ -1,6 +1,6 @@
 //
 //  Constants.swift
-//  17 - UIScrollView
+//  e-shop
 //
 //  Created by Владимир Осипов on 25.06.2022.
 //

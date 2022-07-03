@@ -1,6 +1,6 @@
 //
 //  WebPageViewController.swift
-//  17 - UIScrollView
+//  e-shop
 //
 //  Created by Владимир Осипов on 03.06.2022.
 //
