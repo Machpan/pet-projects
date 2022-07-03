@@ -17,9 +17,13 @@
 		C603EA512863984700A6C0E2 /* Objects.swift in Sources */ = {isa = PBXBuildFile; fileRef = C603EA502863984700A6C0E2 /* Objects.swift */; };
 		C603EA532863986800A6C0E2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C603EA522863986800A6C0E2 /* Constants.swift */; };
 		C603EA552863B54000A6C0E2 /* NewRowTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C603EA542863B54000A6C0E2 /* NewRowTableViewController.swift */; };
+		EAAFFF5D0761C94451373A5B /* Pods_01___EmojiNotes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5549ED2396BA51A42072871 /* Pods_01___EmojiNotes.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		099DCE9AC8DE58571F95804B /* Pods-01 - EmojiNotes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-01 - EmojiNotes.release.xcconfig"; path = "Target Support Files/Pods-01 - EmojiNotes/Pods-01 - EmojiNotes.release.xcconfig"; sourceTree = "<group>"; };
+		4DB01420A805F84A12D558CA /* Pods-01 - EmojiNotes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-01 - EmojiNotes.debug.xcconfig"; path = "Target Support Files/Pods-01 - EmojiNotes/Pods-01 - EmojiNotes.debug.xcconfig"; sourceTree = "<group>"; };
+		C5549ED2396BA51A42072871 /* Pods_01___EmojiNotes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_01___EmojiNotes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C603EA30286383BF00A6C0E2 /* 01 - EmojiNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "01 - EmojiNotes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C603EA33286383BF00A6C0E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C603EA35286383BF00A6C0E2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,17 +43,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAAFFF5D0761C94451373A5B /* Pods_01___EmojiNotes.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D565252ACED66A7A649E6E7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4DB01420A805F84A12D558CA /* Pods-01 - EmojiNotes.debug.xcconfig */,
+				099DCE9AC8DE58571F95804B /* Pods-01 - EmojiNotes.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		A8A08F2BBAE9519DE59025C6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C5549ED2396BA51A42072871 /* Pods_01___EmojiNotes.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C603EA27286383BF00A6C0E2 = {
 			isa = PBXGroup;
 			children = (
 				C603EA32286383BF00A6C0E2 /* 01 - EmojiNotes */,
 				C603EA31286383BF00A6C0E2 /* Products */,
+				0D565252ACED66A7A649E6E7 /* Pods */,
+				A8A08F2BBAE9519DE59025C6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -126,9 +151,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C603EA44286383C300A6C0E2 /* Build configuration list for PBXNativeTarget "01 - EmojiNotes" */;
 			buildPhases = (
+				61B3356CAA6CD48938CD4628 /* [CP] Check Pods Manifest.lock */,
 				C603EA2C286383BF00A6C0E2 /* Sources */,
 				C603EA2D286383BF00A6C0E2 /* Frameworks */,
 				C603EA2E286383BF00A6C0E2 /* Resources */,
+				4DBA0A1E9B6AA6EC374F328E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -184,6 +211,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4DBA0A1E9B6AA6EC374F328E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-01 - EmojiNotes/Pods-01 - EmojiNotes-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-01 - EmojiNotes/Pods-01 - EmojiNotes-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-01 - EmojiNotes/Pods-01 - EmojiNotes-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		61B3356CAA6CD48938CD4628 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-01 - EmojiNotes-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C603EA2C286383BF00A6C0E2 /* Sources */ = {
@@ -340,6 +409,7 @@
 		};
 		C603EA45286383C300A6C0E2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4DB01420A805F84A12D558CA /* Pods-01 - EmojiNotes.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -369,6 +439,7 @@
 		};
 		C603EA46286383C300A6C0E2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 099DCE9AC8DE58571F95804B /* Pods-01 - EmojiNotes.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
