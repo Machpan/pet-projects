@@ -85,6 +85,7 @@ final class EmojiTableViewController: UITableViewController {
         }
         action.backgroundColor = object.isFavourite ? .purple : .gray
         action.image = UIImage(systemName: "heart")
+        
         return action
     }
 }
