@@ -19,6 +19,7 @@ class NewRowViewController: UIViewController {
     let titles = ["symbol", "title", "description"]
     var newObject = Objects(flag: "", title: "", description: "", isFavourite: false)
     weak var delegate: MainScreenViewControllerDelegate?
+    var isNewRow = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +53,8 @@ class NewRowViewController: UIViewController {
                 }
             }
         }
-        delegate?.updateTableView(newObject)
+        delegate?.updateTableView(newObject, isNewRow: isNewRow)
+        isNewRow = false
         self.navigationController?.dismiss(animated: true, completion: nil)
     }
 }

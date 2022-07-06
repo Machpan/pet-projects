@@ -8,7 +8,7 @@
 import UIKit
 //Протокол делегада для создания новой строки
 protocol MainScreenViewControllerDelegate: AnyObject {
-    func updateTableView(_ newObject: Objects)
+    func updateTableView(_ newObject: Objects, isNewRow: Bool)
 }
 
 final class MainScreenViewController: UIViewController{
@@ -22,6 +22,7 @@ final class MainScreenViewController: UIViewController{
     var objects = [Objects(flag: "😱", title: "Срочно", description: "купить книжки", isFavourite: false),
                    Objects(flag: "😼", title: "Купить корм кошке", description: "", isFavourite: false),
                    Objects(flag: "🦶🏻", title: "Поехать на дачу", description: "Взять всё с собой", isFavourite: false)]
+    var selectedRow = IndexPath()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +31,6 @@ final class MainScreenViewController: UIViewController{
         tableView.dataSource = self
         tableView.delegate = self
         createBarButtonitems()
-
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -42,19 +42,20 @@ final class MainScreenViewController: UIViewController{
         let addNewRow = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewRow))
         self.navigationItem.leftBarButtonItem = editButton
         self.navigationItem.rightBarButtonItem = addNewRow
-}
+    }
     @objc func editTableView(){
         tableView.isEditing = !tableView.isEditing
     }
     @objc func addNewRow(){
         let newRowViewController = NewRowViewController()
         let navigationController = UINavigationController(rootViewController: newRowViewController)
+        newRowViewController.isNewRow = true
         newRowViewController.delegate = self
         self.present(navigationController, animated: true, completion: nil)
     }
 }
 
-    //MARK: UITableViewDataSource, UITableViewDelegate
+//MARK: UITableViewDataSource, UITableViewDelegate
 extension MainScreenViewController: UITableViewDataSource, UITableViewDelegate{
     //количество секций
     func numberOfSections(in tableView: UITableView) -> Int { 1 }
@@ -117,18 +118,26 @@ extension MainScreenViewController: UITableViewDataSource, UITableViewDelegate{
         //переходим на следующий экран
         let newRowViewController = NewRowViewController()
         let navigationController = UINavigationController(rootViewController: newRowViewController)
+        selectedRow = indexPath
         let object = objects[indexPath.row]
         newRowViewController.newObject = object
+        newRowViewController.isNewRow = false
+        newRowViewController.delegate = self
         self.present(navigationController, animated: true, completion: nil)
     }
 }
 
 //MARK: Передача данных обратно
 extension MainScreenViewController: MainScreenViewControllerDelegate{
-    func updateTableView(_ newObject: Objects) {
-        objects.append(newObject)
-        let newIndexPath = IndexPath(item: objects.count - 1, section: 0)
-        self.tableView.insertRows(at: [newIndexPath], with: .automatic)
-        tableView.reloadData()
+    func updateTableView(_ newObject: Objects, isNewRow: Bool) {
+        if isNewRow{
+            objects.append(newObject)
+            let newIndexPath = IndexPath(item: objects.count - 1, section: 0)
+            self.tableView.insertRows(at: [newIndexPath], with: .automatic)
+            tableView.reloadData()
+        } else {
+            objects[selectedRow.row] = newObject
+            tableView.reloadRows(at: [selectedRow], with: .fade)
+        }
     }
 }
