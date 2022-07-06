@@ -24,7 +24,6 @@ class NoteTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?){
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         createLabels()
-        makeConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -46,8 +45,5 @@ class NoteTableViewCell: UITableViewCell {
         stackView.alignment = .fill
         stackView.frame = CGRect(x: 70, y: 0, width: 300, height: 70)
         contentView.addSubview(stackView)
-    }
-    func makeConstraints(){
-        
     }
 }
