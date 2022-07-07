@@ -8,10 +8,10 @@
 import UIKit
 import SnapKit
 
-class NewRowTableViewCell: UITableViewCell {
+final class NewRowTableViewCell: UITableViewCell {
     
     static let identifire = "newRowCell"
-    let textField = UITextField()
+    public let textField = UITextField()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?){
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -22,7 +22,7 @@ class NewRowTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func createTextField(){
+    private func createTextField(){
         textField.layer.cornerRadius = 10
         textField.backgroundColor = .white
         contentView.addSubview(textField)

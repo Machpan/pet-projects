@@ -7,19 +7,19 @@
 
 import UIKit
 
-class NewRowViewController: UIViewController {
+final class NewRowViewController: UIViewController {
     
-    let tableView: UITableView = {
+    private let tableView: UITableView = {
         let tableView = UITableView(frame: CGRect.zero, style: .grouped)
         tableView.register(NewRowTableViewCell.self, forCellReuseIdentifier: NewRowTableViewCell.identifire)
         tableView.backgroundColor = .systemGroupedBackground
         tableView.separatorStyle = .none
         return tableView
     }()
-    let titles = ["symbol", "title", "description"]
-    var newObject = Objects(flag: "", title: "", description: "", isFavourite: false)
+    private let titles = ["symbol", "title", "description"]
+    public var newObject = Objects(flag: "", title: "", description: "", isFavourite: false)
     weak var delegate: MainScreenViewControllerDelegate?
-    var isNewRow = false
+    public var isNewRow = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,16 +32,16 @@ class NewRowViewController: UIViewController {
     }
     
     //BarButtons
-    func createBarButtonitems() {
+    private func createBarButtonitems() {
         let canselButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(canselButtonAction))
         let saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveButtonAction))
         self.navigationItem.leftBarButtonItem = canselButton
         self.navigationItem.rightBarButtonItem = saveButton
     }
-    @objc func canselButtonAction(){
+    @objc private  func canselButtonAction(){
         self.navigationController?.dismiss(animated: true, completion: nil)
     }
-    @objc func saveButtonAction(){
+    @objc private func saveButtonAction(){
         guard let indexPath = tableView.indexPathsForVisibleRows else { return }
         for (row, index) in indexPath.enumerated(){
             if let cell = tableView.cellForRow(at: index) as? NewRowTableViewCell{

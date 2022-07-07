@@ -13,16 +13,16 @@ protocol MainScreenViewControllerDelegate: AnyObject {
 
 final class MainScreenViewController: UIViewController{
     
-    let tableView: UITableView = {
+    private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.register(NoteTableViewCell.self, forCellReuseIdentifier: NoteTableViewCell.identifire)
         tableView.separatorStyle = .singleLine
         return tableView
     }()
-    var objects = [Objects(flag: "😱", title: "Срочно", description: "купить книжки", isFavourite: false),
+    private var objects = [Objects(flag: "😱", title: "Срочно", description: "купить книжки", isFavourite: false),
                    Objects(flag: "😼", title: "Купить корм кошке", description: "", isFavourite: false),
                    Objects(flag: "🦶🏻", title: "Поехать на дачу", description: "Взять всё с собой", isFavourite: false)]
-    var selectedRow = IndexPath()
+    private var selectedRow = IndexPath()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,16 +37,16 @@ final class MainScreenViewController: UIViewController{
         tableView.frame = view.bounds
     }
     //BarButtons
-    func createBarButtonitems() {
+    private func createBarButtonitems() {
         let editButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editTableView))
         let addNewRow = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewRow))
         self.navigationItem.leftBarButtonItem = editButton
         self.navigationItem.rightBarButtonItem = addNewRow
     }
-    @objc func editTableView(){
+    @objc private  func editTableView(){
         tableView.isEditing = !tableView.isEditing
     }
-    @objc func addNewRow(){
+    @objc private  func addNewRow(){
         let newRowViewController = NewRowViewController()
         let navigationController = UINavigationController(rootViewController: newRowViewController)
         newRowViewController.isNewRow = true
