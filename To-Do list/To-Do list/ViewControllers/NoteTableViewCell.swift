@@ -8,7 +8,7 @@
 import UIKit
 
 final class NoteTableViewCell: UITableViewCell {
-    
+    //идентификатор для ячейки, св-во класса
     static let identifire = "noteCell"
     private let flagLabel: UILabel = {
         let label = UILabel()
@@ -29,7 +29,7 @@ final class NoteTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+    //расставляем принимаемые значения
     public func setValues(object: Objects){
         flagLabel.text = object.flag
         titleLabel.text = object.title
@@ -37,6 +37,7 @@ final class NoteTableViewCell: UITableViewCell {
         let lightPinkColor = UIColor(red: 1, green: 0.77, blue: 0.87, alpha: 1)
         self.contentView.backgroundColor = object.isFavourite ? lightPinkColor : .white
     }
+    //верстка лейблов
     private func createLabels(){
         contentView.addSubview(flagLabel)
         stackView = UIStackView(arrangedSubviews: [titleLabel, descriptionLabel])

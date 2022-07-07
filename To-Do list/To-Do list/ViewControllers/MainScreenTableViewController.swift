@@ -6,7 +6,7 @@
 //
 
 import UIKit
-//Протокол делегада для создания новой строки
+//Протокол делегата для создания новой строки
 protocol MainScreenViewControllerDelegate: AnyObject {
     func updateTableView(_ newObject: Objects, isNewRow: Bool)
 }

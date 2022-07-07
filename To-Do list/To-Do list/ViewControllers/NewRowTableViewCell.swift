@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 final class NewRowTableViewCell: UITableViewCell {
-    
+    //идентификатор для ячейки, св-во класса
     static let identifire = "newRowCell"
     public let textField = UITextField()
     
@@ -21,7 +21,7 @@ final class NewRowTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+    //верстка ткстового поля
     private func createTextField(){
         textField.layer.cornerRadius = 10
         textField.backgroundColor = .white
