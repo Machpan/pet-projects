@@ -19,7 +19,6 @@ final class NoteTableViewCell: UITableViewCell {
     }()
     private var titleLabel = UILabel()
     private let descriptionLabel = UILabel()
-    private var stackView = UIStackView()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?){
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -40,7 +39,7 @@ final class NoteTableViewCell: UITableViewCell {
     //верстка лейблов
     private func createLabels(){
         contentView.addSubview(flagLabel)
-        stackView = UIStackView(arrangedSubviews: [titleLabel, descriptionLabel])
+        let stackView = UIStackView(arrangedSubviews: [titleLabel, descriptionLabel])
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
         stackView.alignment = .fill
