@@ -8,7 +8,7 @@
 import UIKit
 import SDWebImage
 
-final class AppsSearchController: UICollectionViewController {
+final class AppsSearchController: BaseListController {
     
     fileprivate let cellId = "appsSearchID"
     fileprivate var appResults = [Result]()
@@ -29,13 +29,6 @@ final class AppsSearchController: UICollectionViewController {
         setupSearchBar()
         collectionView.addSubview(enterSearchTermlabel)
         enterSearchTermlabel.fillSuperview(padding: .init(top: 100, left: 50, bottom: 0, right: 50))
-    }
-    
-    init(){
-        super.init(collectionViewLayout: UICollectionViewFlowLayout())
-    }
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     fileprivate func fetchItunesApps(){
