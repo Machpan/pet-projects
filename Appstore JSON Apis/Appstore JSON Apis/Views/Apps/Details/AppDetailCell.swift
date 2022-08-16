@@ -14,6 +14,14 @@ class AppDetailCell: UICollectionViewCell{
     let priceButton = UIButton(title: "$4.99")
     let whatsNewLabel = UILabel(text: "What's new", font: .boldSystemFont(ofSize: 20))
     let releaseNotesLabel = UILabel(text: "Release notes", font: .systemFont(ofSize: 16), numberOfLines: 0)
+    var app: Result! {
+        didSet{
+            nameLabel.text = app?.trackName
+            releaseNotesLabel.text = app?.releaseNotes
+            appIconImageView.sd_setImage(with: URL(string: app?.artworkUrl100 ?? ""))
+            priceButton.setTitle(app?.formattedPrice, for: .normal)
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
