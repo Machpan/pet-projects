@@ -38,6 +38,12 @@
 		C67406F5289440150090DD3B /* BaseListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67406F4289440150090DD3B /* BaseListController.swift */; };
 		C67406F928944EB60090DD3B /* AppsGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67406F828944EB60090DD3B /* AppsGroupCell.swift */; };
 		C67406FD289453280090DD3B /* AppsHorizontalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67406FC289453280090DD3B /* AppsHorizontalController.swift */; };
+		C68A5B9528AD404200A40DC4 /* Reviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A5B9428AD404200A40DC4 /* Reviews.swift */; };
+		C68A5B9828AD746400A40DC4 /* TodayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A5B9728AD746400A40DC4 /* TodayController.swift */; };
+		C68A5B9B28AD75C600A40DC4 /* TodayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A5B9A28AD75C600A40DC4 /* TodayCell.swift */; };
+		C68A5B9D28AD8F5B00A40DC4 /* AppFullscreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A5B9C28AD8F5B00A40DC4 /* AppFullscreenController.swift */; };
+		C68A5B9F28AD935800A40DC4 /* AppFullscreenDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A5B9E28AD935800A40DC4 /* AppFullscreenDescriptionCell.swift */; };
+		C68A5BA128ADA97200A40DC4 /* AppFullscreenHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A5BA028ADA97200A40DC4 /* AppFullscreenHeaderCell.swift */; };
 		C69FE64428897A34005EAFF7 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69FE64328897A34005EAFF7 /* SearchResult.swift */; };
 		C69FE647288981DE005EAFF7 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69FE646288981DE005EAFF7 /* Service.swift */; };
 		F722608502309A9CB35DC28C /* Pods_Appstore_JSON_Apis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B8541ADD1CC7FB0EC9560E /* Pods_Appstore_JSON_Apis.framework */; };
@@ -79,6 +85,12 @@
 		C67406F4289440150090DD3B /* BaseListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BaseListController.swift; path = "Appstore JSON Apis/Controllers/BaseListController.swift"; sourceTree = SOURCE_ROOT; };
 		C67406F828944EB60090DD3B /* AppsGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsGroupCell.swift; sourceTree = "<group>"; };
 		C67406FC289453280090DD3B /* AppsHorizontalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsHorizontalController.swift; sourceTree = "<group>"; };
+		C68A5B9428AD404200A40DC4 /* Reviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reviews.swift; sourceTree = "<group>"; };
+		C68A5B9728AD746400A40DC4 /* TodayController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayController.swift; sourceTree = "<group>"; };
+		C68A5B9A28AD75C600A40DC4 /* TodayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCell.swift; sourceTree = "<group>"; };
+		C68A5B9C28AD8F5B00A40DC4 /* AppFullscreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFullscreenController.swift; sourceTree = "<group>"; };
+		C68A5B9E28AD935800A40DC4 /* AppFullscreenDescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFullscreenDescriptionCell.swift; sourceTree = "<group>"; };
+		C68A5BA028ADA97200A40DC4 /* AppFullscreenHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFullscreenHeaderCell.swift; sourceTree = "<group>"; };
 		C69FE64328897A34005EAFF7 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		C69FE646288981DE005EAFF7 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		D5194268C998ACFA2145087C /* Pods-Appstore JSON Apis.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Appstore JSON Apis.release.xcconfig"; path = "Target Support Files/Pods-Appstore JSON Apis/Pods-Appstore JSON Apis.release.xcconfig"; sourceTree = "<group>"; };
@@ -168,6 +180,7 @@
 		C65B1CE928882AB600B8FA05 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C68A5B9628AD743C00A40DC4 /* Today */,
 				C67406F6289441070090DD3B /* Search */,
 				C67406F128943EC30090DD3B /* Apps */,
 				C65B1CD7288829C900B8FA05 /* ViewController.swift */,
@@ -181,6 +194,7 @@
 		C65B1CEE28883FB300B8FA05 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C68A5B9928AD759B00A40DC4 /* Today */,
 				C67406F728944E7E0090DD3B /* Apps */,
 				C65B1CEF28883FE100B8FA05 /* SearchResultCell.swift */,
 			);
@@ -250,12 +264,32 @@
 			path = Apps;
 			sourceTree = "<group>";
 		};
+		C68A5B9628AD743C00A40DC4 /* Today */ = {
+			isa = PBXGroup;
+			children = (
+				C68A5B9728AD746400A40DC4 /* TodayController.swift */,
+				C68A5B9C28AD8F5B00A40DC4 /* AppFullscreenController.swift */,
+			);
+			path = Today;
+			sourceTree = "<group>";
+		};
+		C68A5B9928AD759B00A40DC4 /* Today */ = {
+			isa = PBXGroup;
+			children = (
+				C68A5B9A28AD75C600A40DC4 /* TodayCell.swift */,
+				C68A5B9E28AD935800A40DC4 /* AppFullscreenDescriptionCell.swift */,
+				C68A5BA028ADA97200A40DC4 /* AppFullscreenHeaderCell.swift */,
+			);
+			path = Today;
+			sourceTree = "<group>";
+		};
 		C69FE64228897A1B005EAFF7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				C69FE64328897A34005EAFF7 /* SearchResult.swift */,
 				C6283FF028956E3100EEB058 /* AppGroup.swift */,
 				C6283FF22895960B00EEB058 /* SocialApp.swift */,
+				C68A5B9428AD404200A40DC4 /* Reviews.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -391,21 +425,27 @@
 				C62216A028AC0A1D00E80B26 /* PreviewScreenshotsController.swift in Sources */,
 				C69FE64428897A34005EAFF7 /* SearchResult.swift in Sources */,
 				C65B1CEB28882B0000B8FA05 /* BaseTabBarController.swift in Sources */,
+				C68A5B9B28AD75C600A40DC4 /* TodayCell.swift in Sources */,
 				C65B1CD8288829C900B8FA05 /* ViewController.swift in Sources */,
 				C65B1CD4288829C900B8FA05 /* AppDelegate.swift in Sources */,
+				C68A5B9F28AD935800A40DC4 /* AppFullscreenDescriptionCell.swift in Sources */,
 				C67406F928944EB60090DD3B /* AppsGroupCell.swift in Sources */,
 				C67170B32896A78A00333ECE /* HorizontalSnappingController.swift in Sources */,
 				C67170B52896AE5500333ECE /* BetterSnappingLayout.swift in Sources */,
 				C65B1CD6288829C900B8FA05 /* SceneDelegate.swift in Sources */,
+				C68A5BA128ADA97200A40DC4 /* AppFullscreenHeaderCell.swift in Sources */,
 				C67170B82896D71100333ECE /* AppDetailController.swift in Sources */,
+				C68A5B9D28AD8F5B00A40DC4 /* AppFullscreenController.swift in Sources */,
 				C65B1CF52888584600B8FA05 /* VerticalStackView.swift in Sources */,
 				C69FE647288981DE005EAFF7 /* Service.swift in Sources */,
 				C6283FEB28954CD500EEB058 /* AppsPageHeader.swift in Sources */,
 				C65B1CF028883FE100B8FA05 /* SearchResultCell.swift in Sources */,
 				C6283FE92895419F00EEB058 /* Extensions.swift in Sources */,
 				C67406F5289440150090DD3B /* BaseListController.swift in Sources */,
+				C68A5B9828AD746400A40DC4 /* TodayController.swift in Sources */,
 				C6283FF128956E3100EEB058 /* AppGroup.swift in Sources */,
 				C67170BB2896EB5D00333ECE /* AppDetailCell.swift in Sources */,
+				C68A5B9528AD404200A40DC4 /* Reviews.swift in Sources */,
 				C6283FEF289556E000EEB058 /* AppsHeaderCell.swift in Sources */,
 				C622169E28AC078900E80B26 /* PreviewCell.swift in Sources */,
 				C62216A228AC14E600E80B26 /* ReviewRowCell.swift in Sources */,
