@@ -31,7 +31,7 @@ class TodayCell: BaseTodayCell{
         imageView.contentMode = .scaleAspectFill
         let imageContainerView = UIView()
         imageContainerView.addSubview(imageView)
-        imageView.centerInSuperview(size: .init(width: 240, height: 249))
+        imageView.centerInSuperview(size: .init(width: 240, height: 240))
         let stackView = VerticalStackView(arrangedSubviews: [categoryLabel, titleLabel, imageContainerView, descriptionLabel], spacing: 8)
         addSubview(stackView)
         stackView.anchor(top: nil, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, padding: .init(top: 0, left: 24, bottom: 24, right: 24))
