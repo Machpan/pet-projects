@@ -7,13 +7,14 @@
 
 import UIKit
 
-class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
+class TodayController: BaseListController, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate {
     
     static let cellSize: CGFloat = 500
     var startingFrame: CGRect?
     var appFullscreenController: AppFullscreenController!
     var items = [TodayItem]()
     var anchoredConstraint: AnchoredConstraints?
+    let blurVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
     let activityIndicatorView: UIActivityIndicatorView = {
         let aiv = UIActivityIndicatorView(style: .large)
         aiv.color = .darkGray
@@ -28,6 +29,9 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.addSubview(blurVisualEffectView)
+        blurVisualEffectView.fillSuperview()
+        blurVisualEffectView.alpha = 0
         view.addSubview(activityIndicatorView)
         activityIndicatorView.centerInSuperview()
         fetchData()
@@ -95,6 +99,9 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
         appFullscreenController.todayItem = items[indexPath.row]
         appFullscreenController.view.layer.cornerRadius = 16
         self.appFullscreenController = appFullscreenController
+        let gesture = UIPanGestureRecognizer(target: self, action: #selector(handleDrag))
+        gesture.delegate = self
+        appFullscreenController.view.addGestureRecognizer(gesture)
     }
     fileprivate func setupStaringCellFrame(_ indexPath: IndexPath){
         guard let cell = collectionView.cellForItem(at: indexPath) else { return }
@@ -103,7 +110,7 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
     }
     fileprivate func setupAppFullscreenStartingPosition(_ indexPath: IndexPath){
         let fullscreenView = appFullscreenController.view!
-        fullscreenView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleRemoveRedView)))
+        fullscreenView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleAppFullscreenDismissal)))
         view.addSubview(fullscreenView)
         addChild(appFullscreenController)
         self.collectionView.isUserInteractionEnabled = false
@@ -114,6 +121,7 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
     }
     fileprivate func beginAnimationAppFullscreen(){
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
+            self.blurVisualEffectView.alpha = 1
             self.anchoredConstraint?.top?.constant = 0
             self.anchoredConstraint?.leading?.constant = 0
             self.anchoredConstraint?.width?.constant = self.view.frame.width
@@ -129,8 +137,10 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
         setupAppFullscreenStartingPosition(indexPath)
         beginAnimationAppFullscreen()
     }
-    @objc func handleRemoveRedView(gesture: UITapGestureRecognizer){
+    @objc func handleAppFullscreenDismissal(){
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut) {
+            self.blurVisualEffectView.alpha = 0
+            self.appFullscreenController.view.transform = .identity
             self.appFullscreenController.tableView.contentInset = .zero
             guard let startingFrame = self.startingFrame else { return }
             self.anchoredConstraint?.top?.constant = startingFrame.origin.y
@@ -142,7 +152,7 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
             cell.todayCell.topConstraint.constant = 24
             cell.layoutIfNeeded()
         } completion: { _ in
-            gesture.view?.removeFromSuperview()
+            self.appFullscreenController.view.removeFromSuperview()
             self.appFullscreenController.removeFromParent()
             self.collectionView.isUserInteractionEnabled = true
         }
@@ -161,5 +171,18 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
             }
             superview = superview?.superview
         }
+    }
+    @objc fileprivate func handleDrag(gesture: UIPanGestureRecognizer){
+        let translationY = gesture.translation(in: appFullscreenController.view).y
+        if gesture.state == .changed{
+            let scale = 1 - translationY / 1000
+            let transform: CGAffineTransform = .init(scaleX: scale, y: scale)
+            self.appFullscreenController.view.transform = transform
+        } else if gesture.state == .ended{
+            handleAppFullscreenDismissal()
+        }
+    }
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        true
     }
 }
