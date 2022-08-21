@@ -28,6 +28,7 @@ class AppFullscreenController: UITableViewController {
             let headerCell = AppFullscreenHeaderCell()
             headerCell.todayCell.todayItem = todayItem
             headerCell.todayCell.layer.cornerRadius = 0
+            headerCell.clipsToBounds = true
             return headerCell
         
         }

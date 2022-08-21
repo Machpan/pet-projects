@@ -20,15 +20,16 @@ class TodayCell: BaseTodayCell{
             imageView.image = todayItem.image
             descriptionLabel.text = todayItem.description
             backgroundColor = todayItem.backgroundColor
+            backgroundView?.backgroundColor = todayItem.backgroundColor
         }
     }
     var topConstraint: NSLayoutConstraint!
     
     override init(frame: CGRect){
         super.init(frame: frame)
-        clipsToBounds = true
         layer.cornerRadius = 16
         imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
         let imageContainerView = UIView()
         imageContainerView.addSubview(imageView)
         imageView.centerInSuperview(size: .init(width: 240, height: 240))
