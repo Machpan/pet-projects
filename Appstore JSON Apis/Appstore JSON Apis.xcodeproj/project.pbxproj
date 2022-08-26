@@ -22,6 +22,8 @@
 		C6283FF128956E3100EEB058 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6283FF028956E3100EEB058 /* AppGroup.swift */; };
 		C6283FF32895960B00EEB058 /* SocialApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6283FF22895960B00EEB058 /* SocialApp.swift */; };
 		C62A0C9828B1955300F3D869 /* BackEnabledNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62A0C9728B1955300F3D869 /* BackEnabledNavigationController.swift */; };
+		C6459F3828B94B7D00CD2A84 /* MusicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6459F3728B94B7D00CD2A84 /* MusicController.swift */; };
+		C6459F3B28B94D4400CD2A84 /* TrackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6459F3A28B94D4400CD2A84 /* TrackCell.swift */; };
 		C65B1CD4288829C900B8FA05 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65B1CD3288829C900B8FA05 /* AppDelegate.swift */; };
 		C65B1CD6288829C900B8FA05 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65B1CD5288829C900B8FA05 /* SceneDelegate.swift */; };
 		C65B1CD8288829C900B8FA05 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65B1CD7288829C900B8FA05 /* ViewController.swift */; };
@@ -73,6 +75,8 @@
 		C6283FF028956E3100EEB058 /* AppGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroup.swift; sourceTree = "<group>"; };
 		C6283FF22895960B00EEB058 /* SocialApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialApp.swift; sourceTree = "<group>"; };
 		C62A0C9728B1955300F3D869 /* BackEnabledNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackEnabledNavigationController.swift; sourceTree = "<group>"; };
+		C6459F3728B94B7D00CD2A84 /* MusicController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicController.swift; sourceTree = "<group>"; };
+		C6459F3A28B94D4400CD2A84 /* TrackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackCell.swift; sourceTree = "<group>"; };
 		C65B1CD0288829C900B8FA05 /* Appstore JSON Apis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Appstore JSON Apis.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C65B1CD3288829C900B8FA05 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C65B1CD5288829C900B8FA05 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -137,6 +141,22 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		C6459F3628B94B5300CD2A84 /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				C6459F3728B94B7D00CD2A84 /* MusicController.swift */,
+			);
+			path = Music;
+			sourceTree = "<group>";
+		};
+		C6459F3928B94D1800CD2A84 /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				C6459F3A28B94D4400CD2A84 /* TrackCell.swift */,
+			);
+			path = Music;
+			sourceTree = "<group>";
+		};
 		C65B1CC7288829C900B8FA05 = {
 			isa = PBXGroup;
 			children = (
@@ -192,6 +212,7 @@
 		C65B1CE928882AB600B8FA05 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C6459F3628B94B5300CD2A84 /* Music */,
 				C68A5B9628AD743C00A40DC4 /* Today */,
 				C67406F6289441070090DD3B /* Search */,
 				C67406F128943EC30090DD3B /* Apps */,
@@ -206,6 +227,7 @@
 		C65B1CEE28883FB300B8FA05 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C6459F3928B94D1800CD2A84 /* Music */,
 				C68A5B9928AD759B00A40DC4 /* Today */,
 				C67406F728944E7E0090DD3B /* Apps */,
 				C65B1CEF28883FE100B8FA05 /* SearchResultCell.swift */,
@@ -459,8 +481,10 @@
 				C68A5BA128ADA97200A40DC4 /* AppFullscreenHeaderCell.swift in Sources */,
 				C67170B82896D71100333ECE /* AppDetailController.swift in Sources */,
 				C68A5B9D28AD8F5B00A40DC4 /* AppFullscreenController.swift in Sources */,
+				C6459F3828B94B7D00CD2A84 /* MusicController.swift in Sources */,
 				C65B1CF52888584600B8FA05 /* VerticalStackView.swift in Sources */,
 				C69FE647288981DE005EAFF7 /* Service.swift in Sources */,
+				C6459F3B28B94D4400CD2A84 /* TrackCell.swift in Sources */,
 				C6283FEB28954CD500EEB058 /* AppsPageHeader.swift in Sources */,
 				C65B1CF028883FE100B8FA05 /* SearchResultCell.swift in Sources */,
 				C6283FE92895419F00EEB058 /* Extensions.swift in Sources */,
