@@ -13,6 +13,13 @@ class AppRowCell: UICollectionViewCell{
     let nameLabel = UILabel(text: "App name", font: .systemFont(ofSize: 20))
     let companyLabel = UILabel(text: "Company Name", font: .systemFont(ofSize: 13))
     let getButton = UIButton(title: "GET")
+    var app: FeedResult! {
+        didSet {
+            companyLabel.text = app.name
+            nameLabel.text = app.name
+            imageView.sd_setImage(with: URL(string: app.artworkUrl100))
+        }
+    }
     
     override init(frame: CGRect){
         super.init(frame: frame)
