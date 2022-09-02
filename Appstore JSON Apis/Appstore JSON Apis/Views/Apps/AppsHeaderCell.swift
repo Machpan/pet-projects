@@ -12,6 +12,13 @@ class AppsHeaderCell: UICollectionViewCell{
     let companyLabel = UILabel(text: "Facebook", font: .boldSystemFont(ofSize: 12))
     var titleLabel = UILabel(text: "Keeping up with friends is faster than ever", font: .systemFont(ofSize: 24))
     let imageView = UIImageView(cornerRadius: 8)
+    var app: SocialApp! {
+        didSet {
+            companyLabel.text = app.name
+            titleLabel.text = app.tagline
+            imageView.sd_setImage(with: URL(string: app.imageUrl))
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
