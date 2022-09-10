@@ -26,6 +26,8 @@ class CompositionalController: UICollectionViewController{
     enum AppSection {
         case topSocial
         case topFree
+        case topGross
+        case topFreeUS
     }
     
     let headerId = "headerId"
@@ -38,12 +40,17 @@ class CompositionalController: UICollectionViewController{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as! AppsHeaderCell
             cell.app = object
             return cell
+        } else if let object = object as? FeedResult{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "smallCellId", for: indexPath) as! AppRowCell
+            cell.app = object
+            cell.getButton.addTarget(self, action: #selector(self.handleGet(button:)), for: .primaryActionTriggered)
+            return cell
         }
         return nil
     }
     
     init(){
-        let layout = UICollectionViewCompositionalLayout { (sectionNumber, _) in
+        let layout = UICollectionViewCompositionalLayout { (sectionNumber, _) -> NSCollectionLayoutSection? in
             if sectionNumber == 0{
                 return CompositionalController.topSection()
             } else{
@@ -72,6 +79,9 @@ class CompositionalController: UICollectionViewController{
         collectionView.backgroundColor = .systemBackground
         navigationItem.title = "Apps"
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.rightBarButtonItem = .init(title: "Fetch top free", style: .plain, target: self, action: #selector(handleFetchTopFree))
+        collectionView.refreshControl = UIRefreshControl()
+        collectionView.refreshControl?.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
         setupDiffableDatasource()
     }
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -89,6 +99,16 @@ class CompositionalController: UICollectionViewController{
         }
         header.label.text = title
         return header
+    }
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let object = diffableDataSource.itemIdentifier(for: indexPath)
+        if let object = object as? SocialApp {
+            let appDetailController = AppDetailController(appId: object.id)
+            navigationController?.pushViewController(appDetailController, animated: true)
+        } else if let object = object as? FeedResult {
+            let appDetailController = AppDetailController(appId: object.id)
+            navigationController?.pushViewController(appDetailController, animated: true)
+        }
     }
     static func topSection() -> NSCollectionLayoutSection{
         let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
@@ -119,18 +139,59 @@ class CompositionalController: UICollectionViewController{
     }
     private func setupDiffableDatasource(){
         collectionView.dataSource = diffableDataSource
+        diffableDataSource.supplementaryViewProvider = .some({ (collectionView, kind, indexPath) -> UICollectionReusableView? in
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: self.headerId, for: indexPath) as! CompositionalHeader
+            let snapshot = self.diffableDataSource.snapshot()
+            let object = self.diffableDataSource.itemIdentifier(for: indexPath)
+            let section = snapshot.sectionIdentifier(containingItem: object!)!
+            switch section {
+            case .topFree: header.label.text = "Best Free apps"
+            case .topGross: header.label.text = "Best grossing"
+            default: header.label.text = "Top free US"
+            }
+            return header
+        })
         Service.shared.fetchSocialApps { (socialApps, err) in
             Service.shared.fetchTopFree { (appGroup, err) in
-                var snapshot = self.diffableDataSource.snapshot()
-                snapshot.appendSections([.topSocial])
-                snapshot.appendItems(socialApps ?? [], toSection: .topSocial)
-                snapshot.appendSections([.topFree])
-                let objects = appGroup?.feed.results ?? []
-                snapshot.appendItems(objects ?? [], toSection: .topFree)
-                self.diffableDataSource.apply(snapshot)
+                Service.shared.fetchTopGrossing { (grossGroup, err) in
+                    var snapshot = self.diffableDataSource.snapshot()
+                    snapshot.appendSections([.topSocial, .topFree, .topGross])
+                    snapshot.appendItems(socialApps ?? [], toSection: .topSocial)
+                    let objects = appGroup?.feed.results ?? []
+                    snapshot.appendItems(objects, toSection: .topFree)
+                    snapshot.appendItems(grossGroup?.feed.results ?? [], toSection: .topGross)
+                    self.diffableDataSource.apply(snapshot)
+                }
             }
+        }
+    }
+    @objc func handleGet(button: UIView){
+        var superview = button.superview
+        while superview != nil {
+            if let cell = superview as? UICollectionViewCell{
+                guard let indexPath = self.collectionView.indexPath(for: cell) else { return }
+                guard let objectIClickOnto = diffableDataSource.itemIdentifier(for: indexPath) else { return }
+                var snapshot = diffableDataSource.snapshot()
+                snapshot.deleteItems([objectIClickOnto])
+                diffableDataSource.apply(snapshot)
+            }
+            superview = superview?.superview
+        }
+    }
+    @objc fileprivate func handleFetchTopFree(){
+        Service.shared.fetchAppGroup(urlString: "https://rss.applemarketingtools.com/api/v2/us/apps/top-free/25/apps.json") { (appGroup, err) in
+            var snapshot = self.diffableDataSource.snapshot()
+            snapshot.insertSections([.topFreeUS], afterSection: .topSocial)
+            snapshot.appendItems(appGroup?.feed.results ?? [], toSection: .topFreeUS)
+            self.diffableDataSource.apply(snapshot)
             
         }
+    }
+    @objc fileprivate func handleRefresh(){
+        collectionView.refreshControl?.endRefreshing()
+        var snapshot = diffableDataSource.snapshot()
+        snapshot.deleteSections([.topFreeUS])
+        diffableDataSource.apply(snapshot)
     }
 }
 
